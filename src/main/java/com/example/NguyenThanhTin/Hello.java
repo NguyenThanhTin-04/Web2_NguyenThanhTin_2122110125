@@ -16,22 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class Hello {
     @GetMapping
     String GetProduct(){
-        return "bạn đã lấy sản phẩm ";
+        return "Bạn đã lấy sản phẩm ";
     }
     @PostMapping
     public String postProduct() {
 
-        return "bạn đã thêm sản phẩm ";
+        return "Bạn đã thêm sản phẩm ";
     }
     @PutMapping("/{id}")
      public String putProduct(@PathVariable int id) {
         
-        return "bạn đã cập nhật sản phẩm  id: "+id;
+        return "Bạn đã cập nhật sản phẩm có id: "+id;
      }
      @DeleteMapping("/{id}")
      public String delProduct(@PathVariable int id) {
         
-        return "bạn đã xóa sản phẩm id: "+id;
+        return "Bạn đã xóa sản phẩm có id: "+id;
     }
 
 }
