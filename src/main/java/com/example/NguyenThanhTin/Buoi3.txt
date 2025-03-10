@@ -1,0 +1,89 @@
+-index là gi?
+-index là 1 cấu trúc dữ liệu dùng để truy vấn dữ liệu nhanh so với thông thường,
+giúp tìm kiếm cơ sỡ dữ liệu nhanh chóng thay vì tìm kiếm toàn bộ bảng,
+-khi nào sử dụng index + khóa và cột có giá trị độc nhất
+                       +tần sức sử dụng:khi sử dụng câu truy vấn càng lớn 
+                       +có sự đa dạng dữ liệu
+                       +không gian bộ nhớ lớn.
+
+-ưu điểm của index:
++giúp tăng độ truy vấn 
++giúp một hàng trở nên riêng biệt hoặc không trùng lặp
++Có thể được sử dụng để sắp xếp dữ liệu
++Các chỉ mục độc nhất đảm bảo tính duy nhất của trường trong cơ sở dữ liệu.
+-nhược điểm của index:
++Làm giảm hiệu năng các câu lệnh insert, update ,delete.
++Tốn bộ nhớ
+-------------------------------------------------------------------------------------
+-Stored Procedure:
+Stored Procedure là 1 phần không thể thiếu của SQL Server. 
+Stored Procedure là một tập hợp các câu lệnh SQL dùng để thực thi một nhiệm vụ nhất định. 
+Nó có thể xem như một hàm trong các ngôn ngữ lập trình.
+
+-vì sao nên sử dụng Stored Procedure:
++Giảm dư thừa mã chương trình: Các đoạn mã tương tự trong các ứng dụng như thêm, cập nhật có thể lưu ở phía CSDL
++Cải thiện tốc độ thực thi câu lệnh SSQL
++Bảo trì: Nếu có sự thay đổi trong CSDL, mã lệnh cần thay đổi có thể xác định trong các SP
++An ninh CSDL tốt hơn: Trong các ứng dụng an ninh cao, với SP có thể kiểm soát truy cập dữ liệu và đưa ra các qui định an ninh tập trung.
+
+-Ưu điểm của Stored Procedure:
++Dễ dàng chỉnh sửa
++Giảm tải truy cập mạng
++Có thể tái sử dụng
++Bảo mật giảm các mối đe dọa bằng cách xóa truy cập trực tiếp tới bảng.
++ suất	Stored Procedure thực thi mã nhanh hơn và giảm tải băng thông.
+
+-Nhược điểm của Stored Procedure:
++Thiếu tính khả chuyển
++Hạn chế ngôn ngữ lập trình
++Sử dụng SP nhiều có thể gây quá tải MySQL server (SQL Server phải lưu trữ quá nhiều kế hoạc thực thi).
+-------------------------------------------------------------------------------------
+-Trigger:
+-Trigger là một loại stored procedure đặc biệt (không có tham số) được thực thi (execute) 
+một cách tự động khi có một sự kiện thay đổi dữ liệu (data modification). 
+Trigger được lưu trữ và quản lý trong Server DB, 
+được dùng trong trường hợp ta muốn kiểm tra các ràng buộc toàn vẹn trong DB.
+
+-Trigger được sử dụng khi nào?
++Trigger thường được sử dụng để kiểm tra ràng buộc trên nhiều quan hệ  hoặc trên nhiều dòng của bảng.
++Ngăn chặn việc xóa những dữ liệu quan trọng.
++Sử dụng Trigger để chương trình có những hàm chạy ngầm nhằm phục vụ nhưng trường hợp hữu hạn và 
+thường không sử dụng cho mục đích kinh doanh hoặc giao dịch.
+
+-Ưu điểm của Trigger:
++ Tự động kích hoạt khi có thay đổi dữ liệu
++ Không thể gọi trực tiếp như Stored Procedure
++ Dùng để ràng buộc dữ liệu, ghi log thay đổi, hoặc kích hoạt xử lý tự động
+
+- Nhược điểm của Trigger:
++ Khó kiểm soát và debug
++ Khó theo dõi khi có nhiều trigger chồng nhau
++ Không thể nhận tham số
+-------------------------------------------------------------------------------------
+Transaction:
+Transaction trong SQL là một nhóm các câu lệnh SQL. Nếu một transaction được thực hiện thành công, 
+tất cả các thay đổi dữ liệu được thực hiện trong transaction được lưu vào cơ sở dữ liệu. 
+Nếu một transaction bị lỗi và được rollback, thì tất cả các sửa đổi dữ liệu sẽ bị xóa
+
+-Đặc điểm của Transaction:
++Bảo toàn: đảm bảo rằng tất cả các câu lệnh trong nhóm lệnh được thực thi thành công. 
+Nếu không, transaction bị hủy bỏ tại thời điểm thất bại và tất cả các thao tác trước đó được khôi phục về trạng thái cũ.
++Nhất quán: đảm bảo rằng cơ sở dữ liệu thay đổi chính xác các trạng thái khi một transaction được thực thi thành công.
++Độc lập: cho phép các transaction hoạt động độc lập và minh bạch với nhau.
++Bền bỉ: đảm bảo rằng kết quả của một transaction được commit vẫn tồn tại trong trường hợp lỗi hệ thống.
+
+ - Khi nào nên sử dụng Transaction?
++ Khi thực hiện các tác vụ phức tạp, liên quan đến nhiều bảng
++ Khi cần đảm bảo tính toàn vẹn và nhất quán của dữ liệu
++khi có nguy cơ xảy ra lỗi trong quá trình xử lý    
+
+-Ưu điểm của Transaction:
++Đảm bảo tính toàn vẹn của dữ liệu
++Xử lý lỗi hiệu quả
++Cải thiện hiệu suất với thao tác đồng thời
++Giảm thiểu sai sót do lỗi người dùng
+
+- Nhược điểm của Transaction :
++Tốn thời gian và bộ nhớ vì phải lưu trữ trạng thái
++Có thể làm chậm hệ thống nếu có nhiều transaction đang chờ commit
++Phức tạp trong lập trình.
