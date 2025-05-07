@@ -1,7 +1,24 @@
-package com.example.NguyenThanhTin.Domain;
+package com.example.NguyenThanhTin.domain;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "brands") // Đảm bảo tên bảng đúng
 public class Brand {
-    public int id;
-    public String name;
-    public int product_id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String name;
+
+    
+
+    // Getter và Setter
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }
